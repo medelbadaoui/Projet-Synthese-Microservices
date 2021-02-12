@@ -1,0 +1,47 @@
+<div class="text-danger" *ngIf="!isCustomerManager()">
+    <h3>Unauthorized</h3>
+</div>
+<div style="width: 500px; margin: auto;">
+    <div *ngIf="currentcustomer" class="edit-form">
+      <h4>Customer</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentcustomer.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            [(ngModel)]="currentcustomer.email"
+            name="email"
+          />
+        </div>
+      </form>
+      <button class="badge badge-danger mr-2" (click)="deleteCustomer()">
+        Delete
+      </button>
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateCustomer()"
+      >
+        Update
+      </button>
+      <br>
+      <p *ngIf=message>{{message}} </p>
+    </div>
+  
+    <div *ngIf="!currentcustomer">
+      <br />
+      <p>This customer is not accessible</p>
+    </div>
+  </div>

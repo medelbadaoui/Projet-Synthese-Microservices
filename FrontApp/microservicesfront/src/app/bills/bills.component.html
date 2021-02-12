@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="text-danger" *ngIf="errorMessage">
+        <h3>{{errorMessage}}</h3>
+    </div>
+    <table class="table" *ngIf="bills">
+        <tr>
+            <th>Billing Date</th><th>CustomerID</th>
+        </tr>
+        <tr *ngFor="let bill of bills._embedded.bills">
+            
+            <td>{{bill.billingDate}}</td>
+            <td>{{bill.customerID}}</td>
+            
+            <td> 
+                
+            </td>
+        </tr>
+    </table>
+    <button *ngIf="isBillingManager()" routerLink="/bills/create" class="btn btn-success">Create new Bill</button>
+</div>

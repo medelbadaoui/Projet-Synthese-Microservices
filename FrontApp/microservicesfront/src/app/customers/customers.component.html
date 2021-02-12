@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="text-danger" *ngIf="errorMessage">
+        <h3>{{errorMessage}}</h3>
+    </div>
+    <table class="table" *ngIf="customers">
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th>
+        </tr>
+        <tr *ngFor="let customer of customers._embedded.customers">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td><a class="badge badge-warning" routerLink= "{{ '/customers/' +customer.id }}" >
+                Edit
+              </a>
+            </td>
+        </tr>
+    </table>
+    <button *ngIf="isCustomerManager()" routerLink="/customers/create" class="btn btn-success">Create new customer</button>
+</div>
+

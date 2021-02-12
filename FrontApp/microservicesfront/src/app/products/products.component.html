@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="text-danger" *ngIf="errorMessage">
+        <h3>{{errorMessage}}</h3>
+    </div>
+    <table class="table" *ngIf="products">
+        <tr>
+            <th>ID</th><th>Name</th><th>Price</th>
+        </tr>
+        <tr *ngFor="let product of products._embedded.products">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td><a class="badge badge-warning" routerLink= "{{ '/products/' +product.id }}" >
+                Edit
+              </a>
+            </td>
+        </tr>
+    </table>
+    <button *ngIf="isProductManager()" routerLink="/products/create" class="btn btn-success">Create new product</button>
+</div>
